@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reservations",
+  "info": {
+    "singularName": "reservation",
+    "pluralName": "reservations",
+    "displayName": "reservation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "allDay": {
+      "type": "boolean",
+      "default": true
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "villas": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}
