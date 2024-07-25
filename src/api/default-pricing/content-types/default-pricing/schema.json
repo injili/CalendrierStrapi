@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "default_pricings",
+  "info": {
+    "singularName": "default-pricing",
+    "pluralName": "default-pricings",
+    "displayName": "DefaultPricing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pricing": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

@@ -362,41 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiReservationReservation extends Schema.CollectionType {
-  collectionName: 'reservations';
-  info: {
-    singularName: 'reservation';
-    pluralName: 'reservations';
-    displayName: 'reservation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    allDay: Attribute.Boolean & Attribute.DefaultTo<true>;
-    start: Attribute.Date;
-    end: Attribute.Date;
-    phone: Attribute.BigInteger;
-    villas: Attribute.Integer & Attribute.DefaultTo<1>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::reservation.reservation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::reservation.reservation',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -823,6 +788,104 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiDefaultPricingDefaultPricing extends Schema.CollectionType {
+  collectionName: 'default_pricings';
+  info: {
+    singularName: 'default-pricing';
+    pluralName: 'default-pricings';
+    displayName: 'DefaultPricing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pricing: Attribute.BigInteger & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::default-pricing.default-pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::default-pricing.default-pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReservationReservation extends Schema.CollectionType {
+  collectionName: 'reservations';
+  info: {
+    singularName: 'reservation';
+    pluralName: 'reservations';
+    displayName: 'reservation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    allDay: Attribute.Boolean & Attribute.DefaultTo<true>;
+    start: Attribute.Date;
+    end: Attribute.Date;
+    phone: Attribute.BigInteger;
+    villas: Attribute.Integer & Attribute.DefaultTo<1>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reservation.reservation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reservation.reservation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSeasonalPricingSeasonalPricing
+  extends Schema.CollectionType {
+  collectionName: 'seasonal_pricings';
+  info: {
+    singularName: 'seasonal-pricing';
+    pluralName: 'seasonal-pricings';
+    displayName: 'SeasonalPricing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    start: Attribute.Date & Attribute.Required;
+    end: Attribute.Date & Attribute.Required;
+    pricing: Attribute.BigInteger & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::seasonal-pricing.seasonal-pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::seasonal-pricing.seasonal-pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -833,7 +896,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::reservation.reservation': ApiReservationReservation;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -842,6 +904,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::default-pricing.default-pricing': ApiDefaultPricingDefaultPricing;
+      'api::reservation.reservation': ApiReservationReservation;
+      'api::seasonal-pricing.seasonal-pricing': ApiSeasonalPricingSeasonalPricing;
     }
   }
 }

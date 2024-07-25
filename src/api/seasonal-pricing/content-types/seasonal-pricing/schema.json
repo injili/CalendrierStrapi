@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seasonal_pricings",
+  "info": {
+    "singularName": "seasonal-pricing",
+    "pluralName": "seasonal-pricings",
+    "displayName": "SeasonalPricing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "start": {
+      "type": "date",
+      "required": true
+    },
+    "end": {
+      "type": "date",
+      "required": true
+    },
+    "pricing": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}
